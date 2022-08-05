@@ -3,6 +3,21 @@ package com.company.Trees;
 import java.util.Scanner;
 
 public class NodesAtDepthK {
+
+    public static void nodesAtDepthK(TreeNode root, int depth, int k){
+        if(root == null){
+            return;
+        }
+
+        if(depth == k){
+            System.out.print(root.val + " ");
+        }
+
+        nodesAtDepthK(root.left, depth+1, k);
+        nodesAtDepthK(root.right, depth+1, k);
+
+    }
+
     public static void main(String []args){
         TreeNode root = new TreeNode(0);
         TreeNode first = new TreeNode(1);
@@ -23,17 +38,5 @@ public class NodesAtDepthK {
 
         nodesAtDepthK(root, 0, k);
     }
-    public static void nodesAtDepthK(TreeNode root, int depth, int k){
-        if(root == null){
-            return;
-        }
 
-        if(depth == k){
-            System.out.print(root.val + " ");
-        }
-
-        nodesAtDepthK(root.left, depth+1, k);
-        nodesAtDepthK(root.right, depth+1, k);
-
-    }
 }

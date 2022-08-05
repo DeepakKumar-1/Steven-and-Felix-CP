@@ -1,6 +1,18 @@
 package com.company.Trees;
 
 public class HeightOfTree {
+
+    public static int treeHeight(TreeNode root){
+        // Base Case
+        if(root == null || root.left == null && root.right == null){
+            return 0;
+        }
+
+        int left = treeHeight(root.left);
+        int right = treeHeight(root.right);
+        return 1 + Math.max(left, right);
+    }
+
     public static void main(String []args){
         TreeNode root = new TreeNode(0);
         TreeNode first = new TreeNode(1);
@@ -18,14 +30,5 @@ public class HeightOfTree {
         int height = treeHeight(root);
         System.out.println(height);
     }
-    public static int treeHeight(TreeNode root){
-        // Base Case
-        if(root == null || root.left == null && root.right == null){
-            return 0;
-        }
 
-        int left = treeHeight(root.left);
-        int right = treeHeight(root.right);
-        return 1 + Math.max(left, right);
-    }
 }

@@ -1,6 +1,30 @@
 package com.company.Trees;
 
 public class TreeTraversals {
+
+
+    public static void inOrderTraversal(TreeNode root){
+        // Base Case
+        if(root == null){
+            return;
+        }
+
+        inOrderTraversal(root.left);
+        System.out.print(root.val + " ");
+        inOrderTraversal(root.right);
+    }
+
+    public static void postOrderTraversal(TreeNode root){
+        if(root == null){
+            return;
+        }
+
+        postOrderTraversal(root.left);
+        postOrderTraversal(root.right);
+        System.out.print(root.val + " ");
+    }
+
+
     public static void main(String []args){
         TreeNode root = new TreeNode(1);
         TreeNode first = new TreeNode(2);
@@ -35,27 +59,6 @@ public class TreeTraversals {
 
                preOrderTraversal(root.left);
                preOrderTraversal(root.right);
-    }
-
-    public static void inOrderTraversal(TreeNode root){
-        // Base Case
-        if(root == null){
-            return;
-        }
-
-        inOrderTraversal(root.left);
-        System.out.print(root.val + " ");
-        inOrderTraversal(root.right);
-    }
-
-    public static void postOrderTraversal(TreeNode root){
-        if(root == null){
-            return;
-        }
-
-        postOrderTraversal(root.left);
-        postOrderTraversal(root.right);
-        System.out.print(root.val + " ");
     }
 
 }

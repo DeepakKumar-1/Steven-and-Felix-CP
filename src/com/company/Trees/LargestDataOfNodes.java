@@ -1,6 +1,20 @@
 package com.company.Trees;
 
 public class LargestDataOfNodes {
+
+    public static int findLargestData(TreeNode root, int max){
+        // Base Case
+        if(root == null){
+            return max;
+        }
+        if(root.val > max){
+            max = root.val;
+        }
+        int leftMax = findLargestData(root.left, max);
+        int rightMax = findLargestData(root.right, max);
+        return Math.max(max, Math.max(leftMax, rightMax));
+    }
+
     public static void main(String []args){
         TreeNode root = new TreeNode(0);
         TreeNode first = new TreeNode(1);
@@ -19,16 +33,4 @@ public class LargestDataOfNodes {
         System.out.println(largest);
     }
 
-    public static int findLargestData(TreeNode root, int max){
-        // Base Case
-        if(root == null){
-            return max;
-        }
-        if(root.val > max){
-            max = root.val;
-        }
-        int leftMax = findLargestData(root.left, max);
-        int rightMax = findLargestData(root.right, max);
-        return Math.max(max, Math.max(leftMax, rightMax));
-    }
 }
