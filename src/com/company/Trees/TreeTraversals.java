@@ -1,6 +1,6 @@
 package com.company.Trees;
 
-public class PreOrderTraversal {
+public class TreeTraversals {
     public static void main(String []args){
         TreeNode root = new TreeNode(1);
         TreeNode first = new TreeNode(2);
