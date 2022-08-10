@@ -1,7 +1,7 @@
 package com.company.Trees;
 
 public class DiameterOfBinaryTree {
-    public static void main(String []args){
+    public static void main(String[] args) {
         TreeNode root = new TreeNode(0);
         TreeNode first = new TreeNode(1);
         TreeNode second = new TreeNode(22);
@@ -16,7 +16,8 @@ public class DiameterOfBinaryTree {
         second.left = fifth;
 
 //        int diameter = findDiameter(root);
-        System.out.println(diameter);
+//        System.out.println(diameter);
     }
+}
 
 
