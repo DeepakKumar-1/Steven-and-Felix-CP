@@ -15,8 +15,29 @@ public class DiameterOfBinaryTree {
         first.right = fourth;
         second.left = fifth;
 
-//        int diameter = findDiameter(root);
-//        System.out.println(diameter);
+        int diameter = findDiameter(root);
+        System.out.println(diameter);
+    }
+
+    public static int findDiameter(TreeNode root){
+        // Base Case
+        if(root == null){
+            return 0;
+        }
+
+
+        int opt1 = height(root.left) + height(root.right);
+        int opt2 = findDiameter(root.left);
+        int opt3 = findDiameter(root.right);
+        return Math.max(opt1 , Math.max(opt2, opt3));
+    }
+
+    private static int height(TreeNode root){
+        // Base Case
+        if(root == null){
+            return 0;
+        }
+        return Math.max(height(root.left) , height(root.right)) + 1;
     }
 }
 
