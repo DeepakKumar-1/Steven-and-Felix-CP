@@ -7,7 +7,20 @@ import java.util.Scanner;
 
 public class SegmentTree {
 
-    static int []segmentTree;
+    private static void createSegmentTree(int[] arr,int []segmentTree,  int start, int end, int index){
+        // Case of Leaf Node
+        if(start == end){
+            segmentTree[index] = arr[start];
+            return;
+        }
+
+        // find Mid
+        int mid = start + (end - start)/2;
+        createSegmentTree(arr,segmentTree, start, mid, (2*index+1));
+        createSegmentTree(arr, segmentTree,mid+1, end, (2*index+2));
+        segmentTree[index] = segmentTree[(2*index+1)] + segmentTree[(2*index+2)];
+    }
+
     public static void main(String []args){
         Scanner sc = new Scanner(System.in);
 
@@ -20,23 +33,10 @@ public class SegmentTree {
         int n = arr.length;
         int x = (int)(Math.ceil(Math.log(n)/Math.log(2))); //Height of segment tree
         int max_size = 2*(int)Math.pow(2, x) - 1; //Maximum size of segment tree
-        segmentTree = new int[max_size];
-        createSegmentTree(arr, 0, arr.length-1, 0);
+        int [] segmentTree = new int[max_size];
+        createSegmentTree(arr, segmentTree, 0, arr.length-1, 0);
         System.out.println(Arrays.toString(segmentTree));
     }
 
 
-    private static int createSegmentTree(int[] arr, int start, int end, int index){
-//         Case of Leaf Node
-        if(start == end){
-            segmentTree[index] = arr[start];
-            return arr[index];
-        }
-
-
-        // find Mid
-        int mid = start + (end - start)/2;
-        segmentTree[index] = createSegmentTree(arr, start, mid, (2*index+1)) + createSegmentTree(arr, mid+1, end, (2*index+2));
-        return segmentTree[index];
-    }
 }
