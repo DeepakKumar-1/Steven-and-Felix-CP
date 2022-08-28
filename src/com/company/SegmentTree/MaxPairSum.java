@@ -9,6 +9,21 @@ class Node{
 
 public class MaxPairSum {
 
+    public static int maxPairSum(Node []st, int start, int end, int treeIndex, int l, int r){
+        // case 1 : completely outside
+        if(start > r || end < l){
+            return 0;
+        }
+        // case 2 : Completely inside
+        if(start >= l && end <= r){
+            return st[treeIndex].maximum;
+        }
+        // case 3 : partially inside or partially outside
+        int mid = start + (end - start)/2;
+        int ans1 = maxPairSum(st, start, mid, 2 * treeIndex + 1, l, r);
+        int ans2 = maxPairSum(st, mid + 1, end, 2 * treeIndex + 2, l, r);
+        return ans1 + ans2;
+    }
     public static void createSegmentTree(int []arr, Node []st, int start, int end, int treeIndex){
         // in case of leaf Node
         if(start == end){
@@ -49,5 +64,11 @@ public class MaxPairSum {
                 System.out.println(0 + ", " + 0);
             }
         }
+
+
+        int l = sc.nextInt();
+        int r = sc.nextInt();
+        int ans = maxPairSum(st, 0, n-1, 0, l, r);
+        System.out.println(ans);
     }
 }
